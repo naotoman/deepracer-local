@@ -119,7 +119,7 @@ estimator = RLEstimator(entry_point="training_worker.py",
 
                                          "batch_size": 64,
                                          "beta_entropy": 0.01,
-                                         "discount_factor": 0.99,
+                                         "discount_factor": 0.9,
                                          "e_greedy_value": 0.05,
                                          "epsilon_steps": 10000,
                                          "exploration_type": "categorical",
