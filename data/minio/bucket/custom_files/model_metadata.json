@@ -39,6 +39,6 @@
     "sensor": [
         "FRONT_FACING_CAMERA"
     ],
-    "neural_network": "DEEP_CONVOLUTIONAL_NETWORK",
+    "neural_network": "DEEP_CONVOLUTIONAL_NETWORK_SHALLOW",
     "version": "2"
 }
