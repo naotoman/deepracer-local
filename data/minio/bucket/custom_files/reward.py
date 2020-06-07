@@ -5,7 +5,9 @@ def reward_function(params):
     
     # Read input parameters
     track_width = params['track_width']
+
     distance_from_center = params['distance_from_center']
+
 
     # Calculate 3 markers that are increasingly further away from the center line
     marker_1 = 0.1 * track_width
@@ -20,6 +22,8 @@ def reward_function(params):
     elif distance_from_center <= marker_3:
         reward = 0.1
     else:
+
         reward = 1e-3  # likely crashed/ close to off track
 
     return reward
+

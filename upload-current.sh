@@ -66,6 +66,7 @@ VAR3=`echo $VAR2 |jq ".best_checkpoint.name = $CHECKPOINT"`
 echo $VAR3 >checkpoint/deepracer_checkpoints.json
 
 # upload files to s3
+aws s3 rm s3://$S3_BUCKET/$S3_PREFIX/model/ --recursive
 for filename in checkpoint/*; do
   aws s3 cp $filename s3://$S3_BUCKET/$S3_PREFIX/model/
 done
