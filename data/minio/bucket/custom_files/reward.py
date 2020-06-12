@@ -1,28 +1,29 @@
 def reward_function(params):
     '''
-    Example of rewarding the agent to stay inside two borders
-    and penalizing getting too close to the objects in front
+    Example of rewarding the agent to follow center line
     '''
-
-    all_wheels_on_track = params['all_wheels_on_track']
-    distance_from_center = params['distance_from_center']
+    
+    # Read input parameters
     track_width = params['track_width']
-    is_left_of_center = params['is_left_of_center']
 
-    # Initialize reward with a small number but not zero
-    # because zero means off-track or crashed
-    reward = 1e-3
+    distance_from_center = params['distance_from_center']
 
-    # Reward if the agent stays inside the two borders of the track
-    if all_wheels_on_track and (0.5 * track_width - distance_from_center) >= 0.05:
-        reward_lane = 1.0
+
+    # Calculate 3 markers that are increasingly further away from the center line
+    marker_1 = 0.1 * track_width
+    marker_2 = 0.25 * track_width
+    marker_3 = 0.5 * track_width
+
+    # Give higher reward if the car is closer to center line and vice versa
+    if distance_from_center <= marker_1:
+        reward = 1
+    elif distance_from_center <= marker_2:
+        reward = 0.5
+    elif distance_from_center <= marker_3:
+        reward = 0.1
     else:
-        reward_lane = 1e-3
 
-
-    # Calculate reward by putting different weights on 
-    # the two aspects above
-    reward += 1.0 * reward_lane
+        reward = 1e-3  # likely crashed/ close to off track
 
     return reward
-    
+
