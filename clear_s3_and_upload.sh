@@ -9,5 +9,9 @@ aws s3 rm --recursive --exclude dummy.txt s3://$S3_BUCKET/$S3_PREFIX/
 
 aws s3 cp --recursive data/minio/bucket/current/model/ s3://$S3_BUCKET/$S3_PREFIX/model/
 aws s3 cp --recursive data/minio/bucket/current/ip/ s3://$S3_BUCKET/$S3_PREFIX/ip/
-aws s3 cp data/minio/bucket/current/training_params.yml s3://$S3_BUCKET/$S3_PREFIX/
+aws s3 cp data/minio/bucket/current/training_params.yaml s3://$S3_BUCKET/$S3_PREFIX/
+aws s3 cp data/minio/bucket/custom_files/reward.py s3://$S3_BUCKET/$S3_PREFIX/
+
 aws s3 rm s3://$S3_BUCKET/$S3_PREFIX/dummy.txt
+
+rm dummy.txt
