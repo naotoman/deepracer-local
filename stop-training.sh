@@ -11,8 +11,8 @@ docker stop $(docker ps | awk ' /sagemaker/ { print $1 }')
 SAGEMAKER_ID=$(docker ps -a | grep sagemaker | awk '{ print $1}')
 ROBOMAKER_ID=$(docker ps -a | grep robomaker | awk '{ print $1}')
 
-docker logs $SAGEMAKER_ID > log_sagemaker.txt
-docker logs $ROBOMAKER_ID > log_robomaker.txt
+docker logs $SAGEMAKER_ID > log_sagemaker.txt 2>&1
+docker logs $ROBOMAKER_ID > log_robomaker.txt 2>&1
 
 docker-compose -f ./docker-compose.yml down
 docker rm $(docker ps -a | awk ' /sagemaker/ { print $1 }')
